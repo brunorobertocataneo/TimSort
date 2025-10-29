@@ -1,0 +1,14 @@
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/bin/Debug/net9.0/TimSort
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/bin/Debug/net9.0/TimSort.deps.json
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/bin/Debug/net9.0/TimSort.runtimeconfig.json
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/bin/Debug/net9.0/TimSort.dll
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/bin/Debug/net9.0/TimSort.pdb
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/obj/Debug/net9.0/TimSort.GeneratedMSBuildEditorConfig.editorconfig
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/obj/Debug/net9.0/TimSort.AssemblyInfoInputs.cache
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/obj/Debug/net9.0/TimSort.AssemblyInfo.cs
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/obj/Debug/net9.0/TimSort.csproj.CoreCompileInputs.cache
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/obj/Debug/net9.0/TimSort.dll
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/obj/Debug/net9.0/refint/TimSort.dll
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/obj/Debug/net9.0/TimSort.pdb
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/obj/Debug/net9.0/TimSort.genruntimeconfig.cache
+/home/bruno/Área de trabalho/UNOESC/ESTRUTURA DE DADOS/TimSort/obj/Debug/net9.0/ref/TimSort.dll
