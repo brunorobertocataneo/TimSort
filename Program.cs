@@ -1,25 +1,33 @@
-﻿using System;
+using System;
 
-// Namespace definido como TimSort
 namespace TimSort
 {
     class Program
     {
         static void Main()
         {
-            // Array inicial para teste
             int[] array = { -11, 12, -42, 0, 1, 90, 68, 6, -9 };
 
-            Console.WriteLine("Array antes da ordenação (TimSort):");
+            Console.WriteLine("Array de inteiros antes da ordenação (TimSort):");
             Console.WriteLine(string.Join(", ", array));
 
-            // Chamada para o método Sort da classe TimSort
             TimSort.Sort(array);
 
-            Console.WriteLine("Array após a ordenação (TimSort):");
+            Console.WriteLine("Array de inteiros após da ordenação (TimSort):");
             Console.WriteLine(string.Join(", ", array));
 
-            // Fim do programa principal
+
+            Console.WriteLine("\n--- Exemplo com Strings ---");
+
+        string[] nomes = { "Maria", "José", "Ana", "Carlos", "Zé", "Bruno", "Beatriz", "Alexandre", "Luiz" };
+
+            Console.WriteLine("Array de nomes antes da ordenação:");
+            Console.WriteLine(string.Join(", ", nomes));
+
+            TimSort.Sort(nomes);
+
+            Console.WriteLine("Array de nomes após a ordenação:");
+            Console.WriteLine(string.Join(", ", nomes));
         }
-    } // Fim da classe Program
-} // Fim do namespace TimSort
+    }
+}
