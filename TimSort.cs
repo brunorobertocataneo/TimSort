@@ -2,32 +2,111 @@ using System;
 
 namespace TimSort
 {
-    class Program
+    public static class TimSort
     {
-        static void Main()
+        // Define um tamanho de bloco para o Insertion Sort inicial.
+        private const int RUN_SIZE = 32;
+
+        public static void Sort<T>(T[] array) where T : IComparable<T>
         {
-            int[] array = { -11, 12, -42, 0, 1, 90, 68, 6, -9 };
+            int n = array.Length;
+            if (array == null || n < 2)
+            {
+                return; // Nada a ordenar
+            }
 
-            Console.WriteLine("Array de inteiros antes da ordenação (TimSort):");
-            Console.WriteLine(string.Join(", ", array));
+            // Passo 1: Ordenar subarrays (runs) de tamanho RUN_SIZE usando Insertion Sort.
+            for (int i = 0; i < n; i += RUN_SIZE)
+            {
+                int left = i;
+                int right = Math.Min(i + RUN_SIZE - 1, n - 1);
+                InsertionSortForTimSort(array, left, right);
+            }
 
-            TimSort.Sort(array);
+            // Passo 2: Mesclar (Merge) os runs ordenados.
+            // Começa mesclando runs de tamanho RUN_SIZE, depois 2*RUN_SIZE, 4*RUN_SIZE, e as demias se as tiver
+            for (int size = RUN_SIZE; size < n; size = 2 * size)
+            {
+                // Para cada par de runs adjacentes de tamanho 'size'
+                for (int left = 0; left < n; left += 2 * size)
+                {
+                    // Encontra o ponto médio e o final do segundo run
+                    int mid = Math.Min(left + size - 1, n - 1);
+                    int right = Math.Min(left + 2 * size - 1, n - 1);
 
-            Console.WriteLine("Array de inteiros após da ordenação (TimSort):");
-            Console.WriteLine(string.Join(", ", array));
-
-
-            Console.WriteLine("\n--- Exemplo com Strings ---");
-
-        string[] nomes = { "Maria", "José", "Ana", "Carlos", "Zé", "Bruno", "Beatriz", "Alexandre", "Luiz" };
-
-            Console.WriteLine("Array de nomes antes da ordenação:");
-            Console.WriteLine(string.Join(", ", nomes));
-
-            TimSort.Sort(nomes);
-
-            Console.WriteLine("Array de nomes após a ordenação:");
-            Console.WriteLine(string.Join(", ", nomes));
+                    // Se mid < right, significa que há um segundo run para mesclar
+                    if (mid < right)
+                    {
+                        MergeForTimSort(array, left, mid, right);
+                    }
+                }
+            }
         }
-    }
-}
+        private static void InsertionSortForTimSort<T>(T[] array, int left, int right) where T : IComparable<T>
+        {
+            for (int i = left + 1; i <= right; i++)
+            {
+                T key = array[i];
+                int j = i - 1;
+                // Move elementos de array[left..i-1] que são maiores que key
+                // para uma posição à frente da sua posição atual
+                while (j >= left && array[j].CompareTo(key) > 0)
+                {
+                    array[j + 1] = array[j];
+                    j--;
+                }
+                array[j + 1] = key;
+            }
+        }
+        private static void MergeForTimSort<T>(T[] array, int left, int mid, int right) where T : IComparable<T>
+        {
+            // Tamanhos dos subarrays temporários
+            int len1 = mid - left + 1;
+            int len2 = right - mid;
+
+            T[] L = new T[len1];
+            T[] R = new T[len2];
+
+            // Copia dados para os arrays temporários
+            Array.Copy(array, left, L, 0, len1);
+            Array.Copy(array, mid + 1, R, 0, len2);
+
+            // Índices para os subarrays L, R e para o array principal 'array'
+            int i = 0, j = 0;
+            int k = left;
+
+            // Mescla os arrays temporários de volta no array principal
+            while (i < len1 && j < len2)
+            {
+                // Usa <= para manter a estabilidade da ordenação
+                if (L[i].CompareTo(R[j]) <= 0)
+                {
+                    array[k] = L[i];
+                    i++;
+                }
+                else
+                {
+                    array[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+
+            // Copia os elementos restantes de L[], se houver
+            while (i < len1)
+            {
+                array[k] = L[i];
+                i++;
+                k++;
+            }
+
+            // Copia os elementos restantes de R[], se houver
+            while (j < len2)
+            {
+                array[k] = R[j];
+                j++;
+                k++;
+            }
+        }
+    } 
+} 
